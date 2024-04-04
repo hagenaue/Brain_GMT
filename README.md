@@ -3,7 +3,7 @@
 This repository contains the public release of our curated brain-related functional gene set file (Brain.GMT) and associated code to accompany the publication:
 
 "Resource: A Curated Database of Brain-Related Functional Gene Sets (Brain.GMT)"
-by Megan H. Hagenauer1*, Yusra Sannah, Elaine K. Hebda-Bauer, Cosette Rhoads, Angela M. O’Connor, Stanley J. Watson, Jr., Huda Akil
+by Megan H. Hagenauer*, Yusra Sannah, Elaine K. Hebda-Bauer, Cosette Rhoads, Angela M. O’Connor, Stanley J. Watson, Jr., Huda Akil
 
 ## Gene Set database (.GMT) files:
 * .GMT files are located in the main directory.
