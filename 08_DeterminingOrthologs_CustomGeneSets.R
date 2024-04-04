@@ -57,6 +57,7 @@ str(Orthologs_Mice_Rats_Symbols_NoNA)
 # $ Symbol_Mouse: chr  "Acadm" "Acadvl" "Acat1" "Acvr1" ...
 # $ Symbol_Rat  : chr  "Acadm" "Acadvl" "Acat1" "Acvr1" ...
 
+
 Orthologs_Mice_Humans_Symbols<-data.frame(Orthologs_Mice_Humans$Symbol_Mouse, Orthologs_Mice_Humans$Symbol_Human, stringsAsFactors = FALSE)
 colnames(Orthologs_Mice_Humans_Symbols)<-c("Symbol_Mouse", "Symbol_Human")
 sum(is.na(Orthologs_Mice_Humans_Symbols$Symbol_Human)==TRUE | is.na(Orthologs_Mice_Humans$Symbol_Mouse)==TRUE)
@@ -92,6 +93,10 @@ write.csv(Orthologs_Mice_Rats_Symbols_NoNA,"Orthologs_Mice_Rats_Symbols_NoNA_Inf
 write.csv(Orthologs_Rats_Humans_Symbols_NoNA, "Orthologs_Rats_Humans_Symbols_NoNA_InformaticsJax_OrthologDatabase_20210228.txt")
 write.csv(Orthologs_Mice_Humans_Symbols_NoNA, "Orthologs_Mice_Humans_Symbols_NoNA_InformaticsJax_OrthologDatabase_20210228.txt")
 
+Orthologs_Mice_MiceAllCaps_Symbols<-data.frame(Orthologs_Mice$Symbol_Mouse, toupper(Orthologs_Mice$Symbol_Mouse), stringsAsFactors = FALSE)
+colnames(Orthologs_Mice_MiceAllCaps_Symbols)<-c("Symbol_Mouse", "Symbol_Mouse_AsUpperCase")
+sum(is.na(Orthologs_Mice_MiceAllCaps_Symbols$Symbol_Mouse))
+#[1] 0
 
 str(DropViz_HC_CellTypeClusterMarkers)
 colnames(DropViz_HC_CellTypeClusterMarkers)[1]<-"Symbol_Mouse"
@@ -178,6 +183,9 @@ str(Zeisel_CA1PyramidalIndex_HumanOrthologs)
 #'data.frame':	333 obs. of  4 variables:
 write.csv(Zeisel_CA1PyramidalIndex_HumanOrthologs, "Zeisel_CA1PyramidalIndex_HumanOrthologs.csv")
 
+#Note: in this code document I don't have code translating the upper case Mouse symbols into standard Mouse symbols
+#When I realized that was missing later, I just quickly fixed the formatting in Excel
+#However, I wrote code for fixing this issue later on for the HCSpecific .GMT using the object that I created to translate: "Orthologs_Mice_MiceAllCaps_Symbols" 
 
 str(StressGeneSets)
 "'data.frame':	2469 obs. of  2 variables:"

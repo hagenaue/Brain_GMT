@@ -261,4 +261,34 @@ CombinedHCspecific_Mouse_RatOrtholog<-t(TempMatrix_RatOrtholog)
 write.table(CombinedHCspecific_Mouse_HumanOrtholog, "CombinedHCspecific_Mouse_HumanOrtholog.gmt.txt", na="", quote=FALSE, sep="\t", col.names = FALSE, row.names = FALSE)
 write.table(CombinedHCspecific_Mouse_RatOrtholog, "CombinedHCspecific_Mouse_RatOrtholog.gmt.txt", na="", quote=FALSE, sep="\t", col.names = FALSE, row.names = FALSE)
 
-write.table(CombinedHCspecific_Mouse, "CombinedHCspecific_Mouse.gmt.txt", na="", quote=FALSE, sep="\t", col.names = FALSE, row.names = FALSE)
+#write.table(CombinedHCspecific_Mouse, "CombinedHCspecific_Mouse.gmt.txt", na="", quote=FALSE, sep="\t", col.names = FALSE, row.names = FALSE)
+
+
+#Orthologs_Mice_MiceAllCaps_Symbols
+
+
+TempMatrix<-t(CombinedHCspecific_Mouse)
+
+TempMatrix_MouseOrtholog<-matrix(data=as.character(), ncol=ncol(TempMatrix), nrow=(nrow(TempMatrix)))
+
+for(i in c(1:ncol(TempMatrix))){
+  
+  TempMatrixColumn<-data.frame("Symbol_Mouse_AsUpperCase"=TempMatrix[,i])
+  
+  TempColumnOrthologMice<-join(TempMatrixColumn, Orthologs_Mice_MiceAllCaps_Symbols, by="Symbol_Mouse_AsUpperCase", type="inner", match="all")
+  if(length(unique(TempColumnOrthologMice$Symbol_Mouse))>1){
+    TempMatrix_MouseOrtholog[c(3:(length(unique(TempColumnOrthologMice$Symbol_Mouse))+2)),i]<-unique(TempColumnOrthologMice$Symbol_Mouse)}
+  else{}
+  
+  rm(TempMatrixColumn, TempColumnOrthologMice)
+  
+}
+
+TempMatrix_MouseOrtholog[c(1:2),]<-TempMatrix[c(1:2),]
+
+CombinedHCspecific_Mouse_MouseOrtholog<-t(TempMatrix_MouseOrtholog)
+
+setwd("/Users/hagenaue/Dropbox (University of Michigan)/LaptopBackup_20221123/SideProjects/BrainGMT/GMT_Versions/GMTs_Mouse")
+
+write.table(CombinedHCspecific_Mouse_MouseOrtholog, "CombinedHCspecific_Mouse_MouseOrtholog.gmt.txt", na="", quote=FALSE, sep="\t", col.names = FALSE, row.names = FALSE)
+
